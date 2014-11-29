@@ -1,12 +1,11 @@
-`dit-vbench` is a collection of speed performance of benchmarks
+dit-vbench is a collection of speed performance benchmarks
 for [dit](http://dit.io).
 
 This git repository exists at: http://github.com/dit/dit-vbench and intended
-to be checked out, rather than installed (via `pip` or similar). To get started, 
-install all necessary prerequisites:
+to be checked out, rather than installed (via pip or similar).
 
-    pip install -r requirements.txt
+To get started, install all necessary prerequisites:
 
-Then, to build the vbench reports, run:
+	pip install -r requirements.txt
 
-    python make.py html
+Then, to build the vbench reports, run `python make.py html`.
