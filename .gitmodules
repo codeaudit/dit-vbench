@@ -1,0 +1,7 @@
+[submodule "dit"]
+	path = dit
+	url = https://github.com/dit/dit
+[submodule "vbench"]
+	path = vbench
+	url = https://github.com/yarikoptic/vbench
+	branch = enh/branches-support
