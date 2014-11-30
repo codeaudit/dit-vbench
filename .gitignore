@@ -3,6 +3,9 @@
 *.pyo
 *.so
 
+# vbench related
+db/hardware.txt
+
 # Creating during installation
 MANIFEST
 build/
