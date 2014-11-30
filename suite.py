@@ -60,7 +60,7 @@ Results were collected on the following machine:
   - {dist}
   - Python {python}
 
-lscpu::
+``lscpu`` output::
 
 {lscpu}
 
@@ -101,14 +101,16 @@ try:
 
     p = subprocess.Popen('lscpu', shell=True, stdout=subprocess.PIPE)
     out, err = p.communicate()
-    subs['lscpu'] = out
+    subs['lscpu'] = '    '+ '\n    '.join(out.split('\n'))
 
 except:
     pass
 else:
     if subs:
         HARDWARE = HARDWARE.format(**subs)
+        #DESCRIPTION += '\n        '.join(HARDWARE.split('\n'))
         DESCRIPTION += HARDWARE
+        print(DESCRIPTION)
 
     filename = os.path.join(BASEDIR, 'db', 'hardware.txt')
     if os.path.isfile(filename):
