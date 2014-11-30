@@ -1,7 +1,3 @@
 [submodule "dit"]
 	path = dit
 	url = https://github.com/dit/dit
-[submodule "vbench"]
-	path = vbench
-	url = https://github.com/chebee7i/vbench
-	branch = master2
