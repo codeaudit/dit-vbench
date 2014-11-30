@@ -108,9 +108,7 @@ except:
 else:
     if subs:
         HARDWARE = HARDWARE.format(**subs)
-        #DESCRIPTION += '\n        '.join(HARDWARE.split('\n'))
         DESCRIPTION += HARDWARE
-        print(DESCRIPTION)
 
     filename = os.path.join(BASEDIR, 'db', 'hardware.txt')
     if os.path.isfile(filename):

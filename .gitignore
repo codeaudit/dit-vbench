@@ -5,6 +5,9 @@
 
 # vbench related
 db/hardware.txt
+db/benchmarks.db
+tmp/
+tmp_tmp/
 
 # Creating during installation
 MANIFEST
