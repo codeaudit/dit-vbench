@@ -14,38 +14,27 @@ python make.py html
 """
 from __future__ import print_function
 
-import contextlib
 import glob
 import os
 import shutil
 import sys
 import sphinx
 
+import matplotlib
+matplotlib.use('Agg')
+import seaborn
+
+from benchmarks.utils import cd
+
 BASEDIR = os.path.dirname(os.path.realpath(__file__))
 # This allows us to import from the "benchmarks" folder.
 sys.path.insert(0, BASEDIR)
+sys.path.insert(0, os.path.join(BASEDIR, 'benchmarks'))
+
 # Use vbench from this folder.
 sys.path.insert(0, os.path.join(BASEDIR, 'vbench'))
 
 SPHINX_BUILD = 'sphinxbuild'
-
-@contextlib.contextmanager
-def cd(newpath):
-    """
-    Change the current working directory to `newpath`, temporarily.
-
-    If the old current working directory no longer exists, do not return back.
-    """
-    oldpath = os.getcwd()
-    os.chdir(newpath)
-    try:
-        yield
-    finally:
-        try:
-            os.chdir(oldpath)
-        except OSError:
-            # If oldpath no longer exists, stay where we are.
-            pass
 
 def update():
     """
@@ -62,7 +51,7 @@ def update():
         'git pull --ff-only',
         'python setup.py build_ext --in-place'
     ]
-    os.system(cmds.join(';'))
+    os.system(';'.join(cmds))
 
 def upload():
     """
@@ -77,7 +66,7 @@ def upload():
         'ghp-import -p build/html -n',
         'git push -f origin gh-pages',
     ]
-    os.system(cmds.join(';'))
+    os.system(';'.join(cmds))
 
 def clean():
     if os.path.exists('build'):

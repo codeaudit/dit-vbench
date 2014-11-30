@@ -9,10 +9,9 @@ Runs the benchmarks and saves the results.
 import logging, os, sys
 
 BASEDIR = os.path.dirname(os.path.realpath(__file__))
-# This allows us to import from the "benchmarks" folder.
+# This allows us to import from the base folder.
 sys.path.insert(0, BASEDIR)
-# Use vbench from this folder.
-sys.path.insert(0, os.path.join(BASEDIR, 'vbench'))
+sys.path.insert(0, os.path.join(BASEDIR, 'benchmarks'))
 
 from vbench.api import BenchmarkRunner, verify_benchmarks
 from vbench.config import is_interactive

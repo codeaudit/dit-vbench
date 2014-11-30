@@ -6,13 +6,18 @@ import subprocess
 
 from vbench.api import collect_benchmarks
 
+from benchmarks.utils import cd
+
 BASEDIR = os.path.dirname(os.path.realpath(__file__))
 
 log = logging.getLogger('vb')
 log.setLevel(logging.INFO)
 
-filenames = glob.glob("{0}/vb*.py".format(BASEDIR))
-benchmarks = collect_benchmarks(filenames)
+with cd(os.path.join(BASEDIR, 'benchmarks')):
+    filenames = glob.glob("vb*.py")
+    names = [filename[:-3] for filename in filenames]
+    print(names)
+    benchmarks = collect_benchmarks(names)
 
 log.info("Initializing settings")
 
@@ -37,12 +42,12 @@ BUILD = """
 python setup.py build_ext --inplace
 """
 
-START_DATE = datetime(2014, 11, 20)
+START_DATE = datetime(2014, 9, 1)
 
 RST_BASE = 'source'
 
 
-dependencies = ['numpy_vb_common.py']
+dependencies = []
 
 DESCRIPTION = """
 These historical benchmark graphs were produced with `vbench
